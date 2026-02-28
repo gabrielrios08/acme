@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactSrictMode: true 
-}
+  reactSrictMode: true,
+};
 
 export default nextConfig;
