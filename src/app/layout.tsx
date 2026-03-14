@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import React from 'react';
 import { inter } from './ui/fonts';
 
-export const metadata: Metadata  = {
-    title: 'ACME'
+export const metadata: Metadata = {
+  title: 'ACME'
 }
 
 export default function RootLayout({children}: {children:React.ReactNode}) {
