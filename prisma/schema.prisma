@@ -4,13 +4,11 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 enum InvoiceStatus {
   PENDENTE
   PAGO
-
 }
 
 model User {
@@ -20,7 +18,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Post      Post[]
-  password String 
+  password  String 
 
   @@map("users")
 }
@@ -39,29 +37,27 @@ model Post {
 }
 
 model Customer {
-  id String @id @default(uuid())
-  name String
-  email String @unique
-  imageUrl String @map("image_url")
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  imageUrl  String   @map("image_url")
 
-  invoices Invoice[]
+  invoices  Invoice[]
 
   @@map("customers")
 }
 
 model Invoice {
-  id String @id @default(uuid())
-  amount Int
-  status InvoiceStatus
-  date DateTime
+  id         String        @id @default(uuid())
+  amount     Int
+  status     InvoiceStatus
+  date       DateTime
 
-  customerId String @map("customer_id")
-  customer Customer @relation(fields: [customerId], 
-  references: [id]) 
+  customerId String        @map("customer_id")
+  customer   Customer      @relation(fields: [customerId], references: [id])
 
-
-  createAt DateTime @default(now()) @map("create_art")
-  updateAt DateTime @updatedAt @map("update_at")
+  createdAt  DateTime      @default(now()) @map("created_at")
+  updatedAt  DateTime      @updatedAt @map("updated_at")
 
   @@index([customerId])
 
@@ -69,12 +65,12 @@ model Invoice {
 }
 
 model Revenue {
-  id String @id default(uuid())
-  month String @unique
-  revune Int
+  id        String   @id @default(uuid())
+  month     String   @unique
+  revenue   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("revenues")
-  
 }
-
 
